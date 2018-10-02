@@ -18,7 +18,9 @@ package com.example.android.roomwordssample;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -87,17 +89,34 @@ List<Word> rem= new ArrayList<>();
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+             //   Uri currentVehicleUri = ContentUris.withAppendedId(AlarmReminderContract.AlarmReminderEntry.CONTENT_URI, 0);
+
+                // Set the URI on the data field of the intent
+               // intent.setData(currentVehicleUri);
                 startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
             }
         });
+
+//        recyclerView.addOnItemTouchListener(
+//                new RecyclerItemClickListener(getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+//                    @Override public void onItemClick(View view, int position) {
+//                        // do whatever
+//                    }
+//
+//                    @Override public void onLongItemClick(View view, int position) {
+//                        // do whatever
+//                    }
+//                })
+//        );
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
-            mWordViewModel.insert(word);
+//            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
+//
+//            mWordViewModel.insert(word);
         } else {
             Toast.makeText(
                     getApplicationContext(),

@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.android.roomwordssample"
-        minSdkVersion 20
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -32,7 +32,11 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
-
+    implementation 'com.getbase:floatingactionbutton:1.9.0'
+    implementation 'com.wdullaer:materialdatetimepicker:1.2.1'
+    implementation 'com.bignerdranch.android:recyclerview-multiselect:+'
+    implementation 'com.wrapp.floatlabelededittext:library:0.0.6'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
     androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1', {
