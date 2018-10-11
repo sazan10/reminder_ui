@@ -66,7 +66,8 @@ List<Word> rem= new ArrayList<>();
             @Override
             public void onChanged(@Nullable final List<Word> words) {
                 // Update the cached copy of the words in the adapter.
-                adapter.setWords(words);
+             //   Toast.makeText(getApplicationContext(), words.get(0).getMtitle().toString(),Toast.LENGTH_SHORT).show();
+              //  adapter.setWords(words);
                 rem=words;
                 if (words.size()==0) {
                     recyclerView.setVisibility(View.GONE);

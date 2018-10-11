@@ -29,6 +29,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -355,22 +356,30 @@ public class NewWordActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 public void saveReminder() {
-    ContentValues values = new ContentValues();
-
-    Word new_word = new Word(0,
+       // Log.i("values", mTitle.toString() + " "+ mTime.toString()+ " "+mDate.toString());
+   mTitle= mTitleText.getText().toString();
+   mTime = mTimeText.getText().toString();
+   mDate=mDateText.getText().toString();
+   mRepeat=mRepeatText.getText().toString();
+   mRepeatType=mRepeatType.getBytes().toString();
+   mRepeatNo=mRepeatNo.getBytes().toString();
+    Word new_word = new Word(
             mTitle.toString(),
             mTime.toString(),
             mDate.toString(),
             mRepeat.toString(),
             mRepeatNo.toString()
-            ,mRepeatType.toString())
-    values.put("title",mTitle);
-    values.put("date",mDate);
-    values.put("repeat",mRepeat);
-    values.put("repeat_no",mRepeatNo);
-    values.put("repeat_type",mRepeatType);
-    values.put("active",mActive);
-    values.put("time",mTime);
+            ,mRepeatType.toString());
+    mWordViewModel.insert(new_word);
+    Intent replyIntent = new Intent();
+    if (TextUtils.isEmpty(mEditWordView.getText())) {
+        setResult(RESULT_CANCELED, replyIntent);
+    } else {
+        String word = mEditWordView.getText().toString();
+        replyIntent.putExtra(EXTRA_REPLY, word);
+        setResult(RESULT_OK, replyIntent);
+    }
+    finish();
 
 }
 
@@ -421,6 +430,11 @@ public void saveReminder() {
 
         // Close the activity
         finish();
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }
 

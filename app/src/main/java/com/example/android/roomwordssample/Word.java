@@ -18,6 +18,7 @@ package com.example.android.roomwordssample;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -34,18 +35,132 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "word_table")
 public class Word {
-
-    @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "word")
-    private String mWord;
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    private int mid;
 
-    public Word(@NonNull String word) {
-        this.mWord = word;
+
+
+    @NonNull
+    @ColumnInfo(name = "title")
+    private String mtitle;
+
+    @NonNull
+    @ColumnInfo(name = "time")
+    private String mtime;
+
+    @NonNull
+    @ColumnInfo(name = "date")
+    private String mdate;
+
+    @NonNull
+    @ColumnInfo(name = "repeat")
+    private String mrepeat;
+
+    @NonNull
+    @ColumnInfo(name = "repeat_no")
+    private String mrepeat_no;
+
+    @NonNull
+    @ColumnInfo(name = "repeat_type")
+    private String mrepeat_type;
+
+    public Word(@NonNull String mtitle,
+                @NonNull String mtime,
+                @NonNull String mdate,
+                @NonNull String mrepeat,
+                @NonNull String mrepeat_no,
+                @NonNull String mrepeat_type) {
+        this.mtitle = mtitle;
+        this.mtime = mtime;
+        this.mdate = mdate;
+        this.mrepeat = mrepeat;
+        this.mrepeat_no = mrepeat_no;
+        this.mrepeat_type = mrepeat_type;
+    }
+
+
+    //    public Word(
+//             @NonNull String title,
+//             @NonNull String time,
+//             @NonNull String date,
+//             @NonNull String repeat,
+//             @NonNull String repeat_no,
+//             @NonNull String repeat_type) {
+//
+//        this.mtitle = title;
+//        this.mtime=time;
+//        this.mdate=date;
+//        this.mrepeat=repeat;
+//        this.mrepeat_no=repeat_no;
+//        this.mrepeat_type=repeat_type;
+//    }
+    @NonNull
+    public int getMid() {
+        return this.mid;
+    }
+
+    public void setMid(@NonNull int mid) {
+        this.mid = mid;
+    }
+
+
+
+    @NonNull
+    public String getMtitle() {
+        return this.mtitle;
+    }
+
+    public void setMtitle(@NonNull String mtitle) {
+        this.mtitle = mtitle;
     }
 
     @NonNull
-    public String getWord() {
-        return this.mWord;
+    public String getMtime() {
+        return this.mtime;
     }
+
+    public void setMtime(@NonNull String mtime) {
+        this.mtime = mtime;
+    }
+
+    @NonNull
+    public String getMdate() {
+        return this.mdate;
+    }
+
+    public void setMdate(@NonNull String mdate) {
+        this.mdate = mdate;
+    }
+
+    @NonNull
+    public String getMrepeat() {
+        return this.mrepeat;
+    }
+
+    public void setMrepeat(@NonNull String mrepeat) {
+        this.mrepeat = mrepeat;
+    }
+
+    @NonNull
+    public String getMrepeat_no() {
+        return this.mrepeat_no;
+    }
+
+    public void setMrepeat_no(@NonNull String mrepeat_no) {
+        this.mrepeat_no = mrepeat_no;
+    }
+
+    @NonNull
+    public String getMrepeat_type() {
+        return this.mrepeat_type;
+    }
+
+    public void setMrepeat_type(@NonNull String mrepeat_type) {
+        this.mrepeat_type = mrepeat_type;
+    }
+
+
+
 }
